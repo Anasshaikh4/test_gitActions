@@ -22,3 +22,9 @@ jobs:
       - name: Start Server
         run: |
           Start-Process -NoNewWindow -FilePath "uvicorn" -ArgumentList "main:app --host 0.0.0.0 --port 8000"
+
+      # Added by Chat GPT
+      - name: Set execution policy to Unrestricted
+        run: |
+            powershell -Command "Set-ExecutionPolicy Unrestricted -Scope Process -Force"
+        
