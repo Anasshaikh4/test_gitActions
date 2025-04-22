@@ -30,8 +30,8 @@
         
 
 
-
 name: Auto-Deploy
+
 on:
   push:
     branches: [ "main" ]
@@ -39,22 +39,25 @@ on:
 jobs:
   deploy:
     runs-on: self-hosted
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Stop Server (if running)
+      - name: Kill Existing Uvicorn Server
         shell: cmd
         run: |
           taskkill /IM uvicorn.exe /F || echo "uvicorn not running"
 
-      - name: Update Code & Install Dependencies
+      - name: Activate Conda Environment and Install Dependencies
         shell: cmd
         run: |
-          git pull origin main
+          call C:\Users\LT\AppData\Local\anaconda3\Scripts\activate.bat actions
           pip install -r requirements.txt
 
-      - name: Start Server
+      - name: Start Uvicorn Server
         shell: cmd
         run: |
+          call C:\Users\LT\AppData\Local\anaconda3\Scripts\activate.bat actions
           start "" uvicorn main:app --host 0.0.0.0 --port 8000
+

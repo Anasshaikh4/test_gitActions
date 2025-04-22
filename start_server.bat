@@ -1,0 +1,3 @@
+@echo off
+echo [INFO] Starting uvicorn server...
+start "" cmd /c "uvicorn main:app --host 0.0.0.0 --port 8000"
