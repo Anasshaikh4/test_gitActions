@@ -30,6 +30,45 @@
         
 
 
+# name: Auto-Deploy
+
+# on:
+#   push:
+#     branches: [ "main" ]
+
+# jobs:
+#   deploy:
+#     runs-on: self-hosted
+
+#     #adding comments
+#     steps:
+#       - name: Checkout Code
+#         uses: actions/checkout@v4
+
+#       - name: Kill Existing Uvicorn Server
+#         shell: cmd
+#         run: |
+#           taskkill /IM uvicorn.exe /F || echo "uvicorn not running"
+
+#       - name: Activate Conda Environment and Install Dependencies
+#         shell: cmd
+#         run: |
+#           call C:\Users\LT\AppData\Local\anaconda3\Scripts\activate.bat actions
+#           pip install -r requirements.txt
+
+#       - name: Start Uvicorn Server
+#         shell: cmd
+#         run: |
+#           call C:\Users\LT\AppData\Local\anaconda3\Scripts\activate.bat actions
+#           start "" uvicorn main:app --host 0.0.0.0 --port 8000
+
+
+
+
+
+
+
+
 name: Auto-Deploy
 
 on:
@@ -40,15 +79,13 @@ jobs:
   deploy:
     runs-on: self-hosted
 
-    #adding comments
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Kill Existing Uvicorn Server
-        shell: cmd
-        run: |
-          taskkill /IM uvicorn.exe /F || echo "uvicorn not running"
+      # (Optional) Just log that we're skipping kill step
+      - name: Skip Killing Uvicorn
+        run: echo "Skipping killing uvicorn.exe to avoid permission errors."
 
       - name: Activate Conda Environment and Install Dependencies
         shell: cmd
@@ -61,4 +98,3 @@ jobs:
         run: |
           call C:\Users\LT\AppData\Local\anaconda3\Scripts\activate.bat actions
           start "" uvicorn main:app --host 0.0.0.0 --port 8000
-
