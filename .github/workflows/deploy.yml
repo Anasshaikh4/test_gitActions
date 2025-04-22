@@ -1,0 +1,24 @@
+name: Auto-Deploy
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: self-hosted  # Use your self-hosted runner
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Stop Server (if running)
+        run: |
+          Get-Process uvicorn -ErrorAction SilentlyContinue | Stop-Process -Force
+
+      - name: Update Code & Install Dependencies
+        run: |
+          git pull origin main
+          pip install -r requirements.txt
+
+      - name: Start Server
+        run: |
+          Start-Process -NoNewWindow -FilePath "uvicorn" -ArgumentList "main:app --host 0.0.0.0 --port 8000"
