@@ -65,10 +65,6 @@
 
 
 
-
-
-
-
 name: Auto-Deploy
 
 on:
@@ -83,9 +79,16 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      # (Optional) Just log that we're skipping kill step
-      - name: Skip Killing Uvicorn
-        run: echo "Skipping killing uvicorn.exe to avoid permission errors."
+      # Set execution policy for this session to bypass restrictions
+      - name: Bypass PowerShell Execution Policy
+        shell: powershell
+        run: |
+          Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
+
+      - name: Kill Existing Uvicorn Server
+        shell: cmd
+        run: |
+          taskkill /IM uvicorn.exe /F || echo "uvicorn not running"
 
       - name: Activate Conda Environment and Install Dependencies
         shell: cmd
