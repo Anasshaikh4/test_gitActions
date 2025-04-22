@@ -1,3 +1,36 @@
+# name: Auto-Deploy
+# on:
+#   push:
+#     branches: [ "main" ]
+
+# jobs:
+#   deploy:
+#     runs-on: self-hosted  # Use your self-hosted runner
+#     steps:
+#       - name: Checkout Code
+#         uses: actions/checkout@v4
+
+#       - name: Stop Server (if running)
+#         run: |
+#           Get-Process uvicorn -ErrorAction SilentlyContinue | Stop-Process -Force
+
+#       - name: Update Code & Install Dependencies
+#         run: |
+#           git pull origin main
+#           pip install -r requirements.txt
+
+#       - name: Start Server
+#         run: |
+#           Start-Process -NoNewWindow -FilePath "uvicorn" -ArgumentList "main:app --host 0.0.0.0 --port 8000"
+
+#       # Added by Chat GPT
+#       - name: Set execution policy to Unrestricted
+#         run: |
+#             powershell -Command "Set-ExecutionPolicy Unrestricted -Scope Process -Force"
+        
+
+
+
 name: Auto-Deploy
 on:
   push:
@@ -5,26 +38,23 @@ on:
 
 jobs:
   deploy:
-    runs-on: self-hosted  # Use your self-hosted runner
+    runs-on: self-hosted
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
 
       - name: Stop Server (if running)
+        shell: cmd
         run: |
-          Get-Process uvicorn -ErrorAction SilentlyContinue | Stop-Process -Force
+          taskkill /IM uvicorn.exe /F || echo "uvicorn not running"
 
       - name: Update Code & Install Dependencies
+        shell: cmd
         run: |
           git pull origin main
           pip install -r requirements.txt
 
       - name: Start Server
+        shell: cmd
         run: |
-          Start-Process -NoNewWindow -FilePath "uvicorn" -ArgumentList "main:app --host 0.0.0.0 --port 8000"
-
-      # Added by Chat GPT
-      - name: Set execution policy to Unrestricted
-        run: |
-            powershell -Command "Set-ExecutionPolicy Unrestricted -Scope Process -Force"
-        
+          start "" uvicorn main:app --host 0.0.0.0 --port 8000
