@@ -85,10 +85,10 @@ jobs:
         run: |
           Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
 
-      - name: Kill Existing Uvicorn Server
-        shell: cmd
-        run: |
-          taskkill /IM uvicorn.exe /F || echo "uvicorn not running"
+      # - name: Kill Existing Uvicorn Server
+      #   shell: cmd
+      #   run: |
+      #     taskkill /IM uvicorn.exe /F || echo "uvicorn not running"
 
       - name: Activate Conda Environment and Install Dependencies
         shell: cmd
@@ -100,4 +100,4 @@ jobs:
         shell: cmd
         run: |
           call C:\Users\LT\AppData\Local\anaconda3\Scripts\activate.bat actions
-          start "" uvicorn main:app --host 0.0.0.0 --port 8000
+          start "" uvicorn main:app --host 0.0.0.0 --port 8001
