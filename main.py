@@ -26,7 +26,7 @@ def get_time():
 def new_endpoint():
     return {"message": "This is a endpoint developed for testing!!"}
 
-@app.get("/mudassirtest")
+@app.get("/mudassirtest2")
 def test_endpoint01():
     return {"message": "This is a test endpoint for Mudassir!", "time": datetime.datetime.now().strftime("%Y-%m-%d, %H:%M:%S")}
 

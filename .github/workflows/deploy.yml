@@ -36,5 +36,5 @@ jobs:
       - name: Start Uvicorn Server
         shell: cmd
         run: |
-          call C:\Mudassir_LambdaTheta\MLOps\start_server.bat
+          call C:\Mudassir_LambdaTheta\MLOps\test_gitActions\start_server.bat
         
