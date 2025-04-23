@@ -29,7 +29,7 @@ jobs:
       - name: Activate Conda Environment and Install Dependencies
         shell: cmd
         run: |
-          call C:\Users\LT\AppData\Local\anaconda3\Scripts\activate.bat actions
+          call C:\Mudassir_LambdaTheta\MLOps\actions\Scripts\activate
           pip install -r requirements.txt
 
       # ✅ Start Uvicorn Server (⚠️ don't use `start ""` here)
