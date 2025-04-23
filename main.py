@@ -26,6 +26,10 @@ def get_time():
 def new_endpoint():
     return {"message": "This is a endpoint developed for testing!!"}
 
+@app.get("/mudassirtest")
+def test_endpoint01():
+    return {"message": "This is a test endpoint for Mudassir!", "time": datetime.datetime.now().strftime("%Y-%m-%d, %H:%M:%S")}
+
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=9001, reload=True)
