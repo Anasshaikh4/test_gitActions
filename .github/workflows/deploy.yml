@@ -36,7 +36,5 @@ jobs:
       - name: Start Uvicorn Server
         shell: cmd
         run: |
-          call C:\Mudassir_LambdaTheta\MLOps\actions\Scripts\activate
-          # start /B uvicorn main:app --port 8000
-          uvicorn main:app --port 8000
-
+          call C:\Mudassir_LambdaTheta\MLOps\start_server.bat
+        

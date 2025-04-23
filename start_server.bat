@@ -1,3 +1,8 @@
 @echo off
-echo [INFO] Starting uvicorn server...
-start "" cmd /c "uvicorn main:app --host 0.0.0.0 --port 8000"
+REM ✅ Start Uvicorn Server (⚠️ don't use `start ""` here)
+
+REM Activate the Conda environment
+call C:\Mudassir_LambdaTheta\MLOps\actions\Scripts\activate.bat
+
+REM Start the Uvicorn server
+uvicorn main:app --port 8000
