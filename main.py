@@ -30,6 +30,9 @@ def new_endpoint():
 def test_endpoint01():
     return {"message": "This is a test endpoint for Mudassir!", "time": datetime.datetime.now().strftime("%Y-%m-%d, %H:%M:%S")}
 
+@app.get("/wajahat")
+def wajahat_endpoint():
+    return {"message": "*** This is a test endpoint for WAJAHAT ! ***", "time": datetime.datetime.now().strftime("%Y-%m-%d, %H:%M:%S")}
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=9001, reload=True)
