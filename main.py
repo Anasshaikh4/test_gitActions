@@ -21,7 +21,7 @@ def get_time():
 
 @app.get("/new")
 def new_endpoint():
-    return {"message": "This is a new endpoint developed for testing!!"}
+    return {"message": "This is a endpoint developed for testing!!"}
 
 
 if __name__ == "__main__":
