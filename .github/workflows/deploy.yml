@@ -79,7 +79,7 @@ jobs:
           Start-Process `
             -FilePath powershell `
             -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File 'C:\Mudassir_LambdaTheta\MLOps\test_gitActions\start_server.bat'" `
-            -WindowStyle Hidden `
+            -WindowStyle Normal `
             -Verb RunAs
     
                
