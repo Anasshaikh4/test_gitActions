@@ -63,6 +63,7 @@ jobs:
 
       - name: Kill Existing Uvicorn Server
         shell: cmd
+        continue-on-error: true  # prevents pipeline failure if not running
         run: |
           taskkill /IM uvicorn.exe /F
 
