@@ -73,7 +73,13 @@ jobs:
           call C:\Mudassir_LambdaTheta\MLOps\actions\Scripts\activate
           pip install -r requirements.txt
 
-      - name: Start Uvicorn Server
-        shell: cmd
+      - name: Start Uvicorn Server (elevated)
+        shell: powershell
         run: |
-          start "" "C:\Mudassir_LambdaTheta\MLOps\test_gitActions\start_server.bat"
+            Start-Process `
+              -FilePath powershell `
+              -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"C:\Mudassir_LambdaTheta\MLOps\test_gitActions\start_server.bat`"" `
+              -WindowStyle Hidden `
+              -Verb RunAs
+               
+        
