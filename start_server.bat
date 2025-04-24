@@ -5,4 +5,4 @@ REM Activate the Conda environment
 call C:\Mudassir_LambdaTheta\MLOps\actions\Scripts\activate
 
 REM Start the Uvicorn server
-start "" uvicorn main:app --port 8000
+uvicorn main:app --port 8000
