@@ -78,5 +78,5 @@ jobs:
       - name: Start FastAPI service
         shell: powershell
         run: |
-          & 'C:\Users\LTPC\Downloads\nssm-2.24\nssm-2.24\win64\nssm.exe' start myfastapi
+          & 'C:\Users\LTPC\Downloads\nssm-2.24\nssm-2.24\win64\nssm.exe' start MyFastAPI2
         

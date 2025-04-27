@@ -37,6 +37,9 @@ def wajahat_endpoint():
 @app.get("/ali")
 def wajahat_endpoint():
     return {"message": "*** This is a test endpoint for ALi ! ***", "time": datetime.datetime.now().strftime("%Y-%m-%d, %H:%M:%S")}
+@app.get("/sohail")
+def wajahat_endpoint():
+    return {"message": "*** This is a test endpoint for SOHAILO ! ***", "time": datetime.datetime.now().strftime("%Y-%m-%d, %H:%M:%S")}
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=9001, reload=True)
