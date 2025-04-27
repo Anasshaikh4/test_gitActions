@@ -41,7 +41,7 @@
 #             -WindowStyle Normal `
 #             -Verb RunAs
     
-               
+# # Following version is for cmd
 
 name: Auto-Deploy
 on:
