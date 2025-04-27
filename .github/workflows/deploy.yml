@@ -62,12 +62,13 @@ jobs:
         run: |
           Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
       # :white_check_mark: Optional: Kill Existing Uvicorn Process (if needed)
-      - name: Kill Existing Uvicorn Server
-        shell: cmd
-        # continue-on-error: true  # prevents pipeline failure if not running
+      
+      - name: Stop FastAPI service
+        shell: powershell
         run: |
-          taskkill /IM uvicorn.exe /F
-      # :white_check_mark: Activate Conda Env & Install Requirements
+          & 'C:\Users\LTPC\Downloads\nssm-2.24\nssm-2.24\win64\nssm.exe' stop MyFastAPI2
+      
+        # :white_check_mark: Activate Conda Env & Install Requirements
       - name: Activate Conda Environment and Install Dependencies
         shell: cmd
         run: |
