@@ -75,7 +75,7 @@ jobs:
           pip install -r requirements.txt
       # :white_check_mark: Start Uvicorn Server (:warning: don't use `start ""` here)
       - name: Start FastAPI service
-        run: |
-          nssm start myfastapi
         shell: powershell
+        run: |
+          & 'C:\Users\LTPC\Downloads\nssm-2.24\nssm-2.24\win64\nssm.exe' start myfastapi
         
