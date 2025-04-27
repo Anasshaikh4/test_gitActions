@@ -56,26 +56,28 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-      # :white_check_mark: Bypass PowerShell Execution Policy just in case
       - name: Bypass PowerShell Execution Policy
         shell: powershell
         run: |
           Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
-      # :white_check_mark: Optional: Kill Existing Uvicorn Process (if needed)
       
       - name: Stop FastAPI service
         shell: powershell
         run: |
           & 'C:\Users\LTPC\Downloads\nssm-2.24\nssm-2.24\win64\nssm.exe' stop MyFastAPI2
       
-        # :white_check_mark: Activate Conda Env & Install Requirements
+      - name: Update code in service folder
+        shell: powershell
+        run: |
+          cd 'C:\Mudassir_LambdaTheta\MLOps\test_gitActions'
+          git pull origin main
+      
       - name: Activate Conda Environment and Install Dependencies
         shell: cmd
         run: |
           call C:\Mudassir_LambdaTheta\MLOps\actions\Scripts\activate
           pip install -r requirements.txt
-      # :white_check_mark: Start Uvicorn Server (:warning: don't use `start ""` here)
-      # check
+
       - name: Start FastAPI service
         shell: powershell
         run: |

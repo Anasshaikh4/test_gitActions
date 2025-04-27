@@ -44,12 +44,16 @@ def sohail():
 
 @app.get("/hussain")
 def whussain_endpoint():
-    return {"message": "*** This is a test endpoint for SOHAILO ! ***", "time": datetime.datetime.now().strftime("%Y-%m-%d, %H:%M:%S")}
+    return {"message": "*** This is a test endpoint for Hussain ! ***", "time": datetime.datetime.now().strftime("%Y-%m-%d, %H:%M:%S")}
 
 
 @app.get("/imran")
 def imran_endpoint():
     return {"message": "*** This is a test endpoint for IMRAN KHAN! ***", "time": datetime.datetime.now().strftime("%Y-%m-%d, %H:%M:%S")}
+
+@app.get("/hamza")
+def imran_endpoint():
+    return {"message": "*** This is a test endpoint for Hamza! ***", "time": datetime.datetime.now().strftime("%Y-%m-%d, %H:%M:%S")}
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=9001, reload=True)
