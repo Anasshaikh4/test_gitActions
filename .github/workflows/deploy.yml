@@ -76,6 +76,6 @@ jobs:
       # :white_check_mark: Start Uvicorn Server (:warning: don't use `start ""` here)
       - name: Start FastAPI service
         run: |
-          nssm start MyFastAPI
+          nssm start myfastapi
         shell: powershell
         
