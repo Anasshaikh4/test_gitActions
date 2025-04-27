@@ -74,6 +74,7 @@ jobs:
           call C:\Mudassir_LambdaTheta\MLOps\actions\Scripts\activate
           pip install -r requirements.txt
       # :white_check_mark: Start Uvicorn Server (:warning: don't use `start ""` here)
+      # check
       - name: Start FastAPI service
         shell: powershell
         run: |
